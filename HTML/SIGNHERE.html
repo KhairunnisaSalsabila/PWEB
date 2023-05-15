@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-warning">
+        <a class="navbar-brand" href="home.html">WE-Signature</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="home.html">Home</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="inbox.html">Inbox</a>
+
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="send.html">Send</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="new.html">+ New</a>
+                </li>         
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Pengguna 
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="profile.html">Profil</a>
+                        <a class="dropdown-item" href="login.html">Logout</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <section class="mt-4 pb-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label style="display: block; text-align: center; width: 100%;font-weight: bold; font-size: 1.2em;">Daftar Permintaan Tanda Tangan</label>
+                              </div>
+                              <div class="signature-list">
+                                <div class="company-list">
+                                  <div class="company-item">
+                                    <div class="company-info">
+                                      <h6>Perusahaan 1</h6>
+                                      <p>Deskripsi perusahaan 1</p>
+                                      <button class="btn-warning" onclick="window.location.href='SIGNHERE2.html';signDocument(1)">Tandatangani</button>
+                                    </div>
+                                  </div>
+                                  <div class="company-item">
+                                    <div class="company-info">
+                                      <h6>Perusahaan 2</h6>
+                                      <p>Deskripsi perusahaan 2</p>
+                                      <button class="btn-warning" onclick="window.location.href='SIGNHERE2.html';signDocument(2)">Tandatangani</button>
+                                    </div>
+                                  </div>
+                                  
+                                </div>
+                              </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+  <style>
+      body,html {
+            font-family: Quicksand,sans-serif !important;
+            height:100%;
+            padding-top: 2rem;
+        }
+    .signature-list {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.signature-list h2 {
+  text-align: center;
+}
+
+.company-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.company-item {
+  width: 200px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+}
+
+.company-logo img {
+  max-width: 100%;
+}
+
+.company-info h6 {
+  margin: 0;
+}
+
+.company-info p {
+  margin-bottom: 10px;
+}
+
+.btn-warning {
+  padding: 10px 20px;
+  background-color: #f0ad4e;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn-waring:hover {
+  background-color: #e69532;
+}
+
+  </style>
