@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<!-- <link rel="stylesheet" href="style.css"> -->
+
+	<script src="./js/jquerynew.js"></script>
+	<script src="https://cdn.tailwindcss.com"></script>
+
+	<title>WE Signature</title>
+</head>
+
+<body>
+
+	<div class="flex min-h-screen w-full">
+
+	
+
+	<!-- SIDEBAR -->
+	<!-- <section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">SiDoo</span>
+		</a>
+		<div class="profile-tab-nav border-right">
+			<ul class="side-menu top">
+				<div class="p-4">
+					<h3 class="text-center" style="margin-left : 70px;" id="username"></h3>
+				</div>
+			</ul>
+			<ul class="side-menu top">
+				<li class="active">
+					<a class="nav-link" id="dashboard-tab" data-toggle="pill" href="index.html" role="tab"
+						aria-controls="dashboard" aria-selected="false">
+						<i class='bx bxs-home'></i>
+						<span class="text">Home</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="nav-link" id="profile-tab" data-toggle="pill" href="profile.html" role="tab"
+						aria-controls="profile" aria-selected="false">
+						<i class='bx bxs-group'></i>
+						<span class="text">Profile</span>
+					</a>
+				</li>
+				<li>
+					<a class="nav-link" id="document-tab" data-toggle="pill" href="document.html" role="tab"
+						aria-controls="documents" aria-selected="false">
+						<i class='bx bxs-file'></i>
+						<span class="text">Document</span>
+					</a>
+				</li>
+
+			</ul>
+			<ul class="side-menu">
+
+				<li>
+					<a class="nav-link" id="logout-tab" data-toggle="pill" href="javascript:void(0)" role="tab"
+						aria-controls="logout" aria-selected="false" onclick="logout()">
+						<i class='bx bxs-log-out-circle'></i>
+						<span class="text">Logout</span>
+					</a>
+				</li>
+			</ul>
+
+	</section> -->
+	<!-- SIDEBAR -->
+
+	<section class="flex flex-col h-screen justify-between p-4 text-xl font-semibold">
+		<div>
+			<svg width="193" height="33" viewBox="0 0 193 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<path d="M16.275 24L10.55 6.5H14.75L19.725 22H17.625L22.825 6.5H26.575L31.575 22H29.55L34.65 6.5H38.525L32.8 24H28.45L24.025 10.4H25.175L20.625 24H16.275ZM44.5109 13.55H52.9359V16.7H44.5109V13.55ZM44.8109 20.75H54.3359V24H40.7859V6.5H54.0109V9.75H44.8109V20.75ZM56.2951 18.525V15.4H63.3701V18.525H56.2951ZM72.1463 24.3C70.7463 24.3 69.4046 24.1167 68.1213 23.75C66.838 23.3667 65.8046 22.875 65.0213 22.275L66.3963 19.225C67.1463 19.7583 68.0296 20.2 69.0463 20.55C70.0796 20.8833 71.1213 21.05 72.1713 21.05C72.9713 21.05 73.613 20.975 74.0963 20.825C74.5963 20.6583 74.963 20.4333 75.1963 20.15C75.4296 19.8667 75.5463 19.5417 75.5463 19.175C75.5463 18.7083 75.363 18.3417 74.9963 18.075C74.6296 17.7917 74.1463 17.5667 73.5463 17.4C72.9463 17.2167 72.2796 17.05 71.5463 16.9C70.8296 16.7333 70.1046 16.5333 69.3713 16.3C68.6546 16.0667 67.9963 15.7667 67.3963 15.4C66.7963 15.0333 66.3046 14.55 65.9213 13.95C65.5546 13.35 65.3713 12.5833 65.3713 11.65C65.3713 10.65 65.638 9.74167 66.1713 8.925C66.7213 8.09167 67.538 7.43333 68.6213 6.95C69.7213 6.45 71.0963 6.2 72.7463 6.2C73.8463 6.2 74.9296 6.33333 75.9963 6.6C77.063 6.85 78.0046 7.23333 78.8213 7.75L77.5713 10.825C76.7546 10.3583 75.938 10.0167 75.1213 9.8C74.3046 9.56667 73.5046 9.45 72.7213 9.45C71.938 9.45 71.2963 9.54167 70.7963 9.725C70.2963 9.90833 69.938 10.15 69.7213 10.45C69.5046 10.7333 69.3963 11.0667 69.3963 11.45C69.3963 11.9 69.5796 12.2667 69.9463 12.55C70.313 12.8167 70.7963 13.0333 71.3963 13.2C71.9963 13.3667 72.6546 13.5333 73.3713 13.7C74.1046 13.8667 74.8296 14.0583 75.5463 14.275C76.2796 14.4917 76.9463 14.7833 77.5463 15.15C78.1463 15.5167 78.6296 16 78.9963 16.6C79.3796 17.2 79.5713 17.9583 79.5713 18.875C79.5713 19.8583 79.2963 20.7583 78.7463 21.575C78.1963 22.3917 77.3713 23.05 76.2713 23.55C75.188 24.05 73.813 24.3 72.1463 24.3ZM82.0637 24V10.55H85.9637V24H82.0637ZM84.0137 8.675C83.297 8.675 82.7137 8.46667 82.2637 8.05C81.8137 7.63333 81.5887 7.11667 81.5887 6.5C81.5887 5.88333 81.8137 5.36667 82.2637 4.95C82.7137 4.53333 83.297 4.325 84.0137 4.325C84.7303 4.325 85.3137 4.525 85.7637 4.925C86.2137 5.30833 86.4387 5.80833 86.4387 6.425C86.4387 7.075 86.2137 7.61667 85.7637 8.05C85.3303 8.46667 84.747 8.675 84.0137 8.675ZM95.9082 29.05C94.6415 29.05 93.4165 28.8917 92.2332 28.575C91.0665 28.275 90.0915 27.8167 89.3082 27.2L90.8582 24.4C91.4249 24.8667 92.1415 25.2333 93.0082 25.5C93.8915 25.7833 94.7582 25.925 95.6082 25.925C96.9915 25.925 97.9915 25.6167 98.6082 25C99.2415 24.3833 99.5582 23.4667 99.5582 22.25V20.225L99.8082 16.85L99.7582 13.45V10.55H103.458V21.75C103.458 24.25 102.808 26.0917 101.508 27.275C100.208 28.4583 98.3415 29.05 95.9082 29.05ZM95.3082 23.35C94.0582 23.35 92.9249 23.0833 91.9082 22.55C90.9082 22 90.0999 21.2417 89.4832 20.275C88.8832 19.2917 88.5832 18.15 88.5832 16.85C88.5832 15.5333 88.8832 14.3917 89.4832 13.425C90.0999 12.4417 90.9082 11.6833 91.9082 11.15C92.9249 10.6167 94.0582 10.35 95.3082 10.35C96.4415 10.35 97.4415 10.5833 98.3082 11.05C99.1749 11.5 99.8499 12.2083 100.333 13.175C100.817 14.125 101.058 15.35 101.058 16.85C101.058 18.3333 100.817 19.5583 100.333 20.525C99.8499 21.475 99.1749 22.1833 98.3082 22.65C97.4415 23.1167 96.4415 23.35 95.3082 23.35ZM96.0832 20.15C96.7665 20.15 97.3749 20.0167 97.9082 19.75C98.4415 19.4667 98.8582 19.075 99.1582 18.575C99.4582 18.075 99.6082 17.5 99.6082 16.85C99.6082 16.1833 99.4582 15.6083 99.1582 15.125C98.8582 14.625 98.4415 14.2417 97.9082 13.975C97.3749 13.6917 96.7665 13.55 96.0832 13.55C95.3999 13.55 94.7915 13.6917 94.2582 13.975C93.7249 14.2417 93.2999 14.625 92.9832 15.125C92.6832 15.6083 92.5332 16.1833 92.5332 16.85C92.5332 17.5 92.6832 18.075 92.9832 18.575C93.2999 19.075 93.7249 19.4667 94.2582 19.75C94.7915 20.0167 95.3999 20.15 96.0832 20.15ZM115.263 10.35C116.33 10.35 117.28 10.5667 118.113 11C118.963 11.4167 119.63 12.0667 120.113 12.95C120.596 13.8167 120.838 14.9333 120.838 16.3V24H116.938V16.9C116.938 15.8167 116.696 15.0167 116.213 14.5C115.746 13.9833 115.08 13.725 114.213 13.725C113.596 13.725 113.038 13.8583 112.538 14.125C112.055 14.375 111.671 14.7667 111.388 15.3C111.121 15.8333 110.988 16.5167 110.988 17.35V24H107.088V10.55H110.813V14.275L110.113 13.15C110.596 12.25 111.288 11.5583 112.188 11.075C113.088 10.5917 114.113 10.35 115.263 10.35ZM132.623 24V21.375L132.373 20.8V16.1C132.373 15.2667 132.115 14.6167 131.598 14.15C131.098 13.6833 130.323 13.45 129.273 13.45C128.557 13.45 127.848 13.5667 127.148 13.8C126.465 14.0167 125.882 14.3167 125.398 14.7L123.998 11.975C124.732 11.4583 125.615 11.0583 126.648 10.775C127.682 10.4917 128.732 10.35 129.798 10.35C131.848 10.35 133.44 10.8333 134.573 11.8C135.707 12.7667 136.273 14.275 136.273 16.325V24H132.623ZM128.523 24.2C127.473 24.2 126.573 24.025 125.823 23.675C125.073 23.3083 124.498 22.8167 124.098 22.2C123.698 21.5833 123.498 20.8917 123.498 20.125C123.498 19.325 123.69 18.625 124.073 18.025C124.473 17.425 125.098 16.9583 125.948 16.625C126.798 16.275 127.907 16.1 129.273 16.1H132.848V18.375H129.698C128.782 18.375 128.148 18.525 127.798 18.825C127.465 19.125 127.298 19.5 127.298 19.95C127.298 20.45 127.49 20.85 127.873 21.15C128.273 21.4333 128.815 21.575 129.498 21.575C130.148 21.575 130.732 21.425 131.248 21.125C131.765 20.8083 132.14 20.35 132.373 19.75L132.973 21.55C132.69 22.4167 132.173 23.075 131.423 23.525C130.673 23.975 129.707 24.2 128.523 24.2ZM145.303 24.2C143.72 24.2 142.486 23.8 141.603 23C140.72 22.1833 140.278 20.975 140.278 19.375V7.575H144.178V19.325C144.178 19.8917 144.328 20.3333 144.628 20.65C144.928 20.95 145.336 21.1 145.853 21.1C146.47 21.1 146.995 20.9333 147.428 20.6L148.478 23.35C148.078 23.6333 147.595 23.85 147.028 24C146.478 24.1333 145.903 24.2 145.303 24.2ZM138.203 13.85V10.85H147.528V13.85H138.203ZM156.342 24.2C155.226 24.2 154.226 23.9833 153.342 23.55C152.476 23.1167 151.801 22.4583 151.317 21.575C150.834 20.675 150.592 19.5333 150.592 18.15V10.55H154.492V17.575C154.492 18.6917 154.726 19.5167 155.192 20.05C155.676 20.5667 156.351 20.825 157.217 20.825C157.817 20.825 158.351 20.7 158.817 20.45C159.284 20.1833 159.651 19.7833 159.917 19.25C160.184 18.7 160.317 18.0167 160.317 17.2V10.55H164.217V24H160.517V20.3L161.192 21.375C160.742 22.3083 160.076 23.0167 159.192 23.5C158.326 23.9667 157.376 24.2 156.342 24.2ZM167.83 24V10.55H171.555V14.35L171.03 13.25C171.43 12.3 172.072 11.5833 172.955 11.1C173.839 10.6 174.914 10.35 176.18 10.35V13.95C176.014 13.9333 175.864 13.925 175.73 13.925C175.597 13.9083 175.455 13.9 175.305 13.9C174.239 13.9 173.372 14.2083 172.705 14.825C172.055 15.425 171.73 16.3667 171.73 17.65V24H167.83ZM185.077 24.2C183.543 24.2 182.193 23.9 181.027 23.3C179.877 22.7 178.985 21.8833 178.352 20.85C177.718 19.8 177.402 18.6083 177.402 17.275C177.402 15.925 177.71 14.7333 178.327 13.7C178.96 12.65 179.818 11.8333 180.902 11.25C181.985 10.65 183.21 10.35 184.577 10.35C185.893 10.35 187.077 10.6333 188.127 11.2C189.193 11.75 190.035 12.55 190.652 13.6C191.268 14.6333 191.577 15.875 191.577 17.325C191.577 17.475 191.568 17.65 191.552 17.85C191.535 18.0333 191.518 18.2083 191.502 18.375H180.577V16.1H189.452L187.952 16.775C187.952 16.075 187.81 15.4667 187.527 14.95C187.243 14.4333 186.852 14.0333 186.352 13.75C185.852 13.45 185.268 13.3 184.602 13.3C183.935 13.3 183.343 13.45 182.827 13.75C182.327 14.0333 181.935 14.4417 181.652 14.975C181.368 15.4917 181.227 16.1083 181.227 16.825V17.425C181.227 18.1583 181.385 18.8083 181.702 19.375C182.035 19.925 182.493 20.35 183.077 20.65C183.677 20.9333 184.377 21.075 185.177 21.075C185.893 21.075 186.518 20.9667 187.052 20.75C187.602 20.5333 188.102 20.2083 188.552 19.775L190.627 22.025C190.01 22.725 189.235 23.2667 188.302 23.65C187.368 24.0167 186.293 24.2 185.077 24.2Z" fill="black"/>
+				<path d="M2 1.5L2 32.5" stroke="#F8D442" stroke-width="4"/>
+			</svg>
+		</div>
+		<div>
+			<img src="" alt="">
+			<div id="name-title">Name</div>
+		</div>
+		<div class="flex flex-col gap-8">
+			<div class="flex flex-col gap-2">
+				<div><a href="index.html">Inboxes</a></div>
+				<div><a href="sent.html">Sent</a></div>
+			</div>
+			<div><a href="profile.html">Profile</a></div>
+		</div>
+		<div><a href="login/index.html">Logout</a></div>
+	</section>
+	
+	<section class="flex flex-col gap-4 w-full bg-gray-300">
+		<div class="h-10 bg-white rounded-b"></div>
+		<div class="flex gap-2 justify-between p-4">
+            <div class="flex flex-col gap-2">
+                <div class="text-xl font-bold">Sent</div>
+                <div class="text-sm">Send documents for signature</div>
+            </div>
+            <div>
+				<button class="p-4 bg-[#FEAF00] rounded" id="showModalButton">Upload document</button>
+			</div>
+		</div>
+		<div class="flex flex-col gap-2 p-4">
+			<div class="header flex gap-2 justify-between font-semibold px-6 py-2 items-center">
+				<div class="max-w-[20%] text-center w-full">Document name</div>
+				<div class="max-w-[20%] text-center w-full">Status</div>
+				<div class="max-w-[20%] text-center w-full">Last modified</div>
+				<div class="max-w-[20%] text-center w-full">Direction</div>
+				<div class="max-w-[20%] text-center w-full">Email direction</div>
+			</div>
+			<div class="table-data flex flex-col gap-2 p-4">
+				<!-- <div class="flex gap-2 justify-between bg-white p-2 rounded items-center">
+					<div>Surat Komitmen OR</div>
+					<div>Sent</div>
+					<div>12-03-2023</div>
+					<div>CEO of PT Astra Honda Motor</div>
+					<div>astra@gmail.com</div>
+				</div> -->
+			</div>
+		</div>
+	</section>
+
+    
+    <div id="modal" class="hidden h-screen w-screen absolute justify-center items-center">
+        <div class="relative bg-white rounded-lg flex flex-col gap-2 p-6 ">
+            <!-- <div class="col-md-9 form-inline felement" data-fieldtype="filemanager"
+								id="yui_3_17_2_1_1683986738025_314">
+
+								<h4 style="margin-top: -10px; margin-left: 10px;">Nama File</h4>
+								<input type="filenama" id="filenama" name="filenama" placeholder="Masukkan nama file" required><br>
+
+								<h4 style="margin-top: -10px; margin-left: 10px;">Upload File PDF</h4>
+								<input type="file" name="pdffile" id="pdffile" accept="application/pdf"
+									onchange="pdfconvertToBase64()" />
+									<h4 style="margin-top: -10px; margin-left: 10px; ">Username To</h4>
+									<div class="select">
+									<select id="username_to" name="username_to" class="form-control"  style="margin-bottom: 15px;"></select>
+									</div>
+								<input type="hidden" id="pdftext" name="pdftext" />
+								<button type="save" id="saveButton">Save</button>
+
+
+							</div> -->
+
+                            <div class="flex flex-col gap-2 p-2 bg-slate-200 rounded">
+                                <label for="filenama">Nama File</label>
+                                <input class="p-1" type="text" id="filenama" name="filenama" placeholder="Masukkan nama file" required>
+                            </div>
+                            <div class="flex flex-col gap-2 p-2 bg-slate-200 rounded">
+                                <label for="pdffile">Upload File PDF</label>
+                                <input type="file" name="pdffile" id="pdffile" accept="application/pdf"
+                            onchange="pdfconvertToBase64()" />
+                            </div>
+                            <div class="flex flex-col gap-2 p-2 bg-slate-200 rounded">
+                                <label for="username_to">Direction</label>
+                                <select name="username_to" id="username_to"></select>
+                                <input type="hidden" id="pdftext" name="pdftext" />
+                            </div>
+                            <div class="flex gap-2 justify-between w-full">
+                                <button class="p-2 bg-[#FEAF00] rounded w-full" type="save" id="saveButton">Save</button>
+                                <button class="p-2 bg-red-500 text-black rounded w-full" id="cancelButton" >Cancel</button>
+                            </div>
+
+
+							<script>
+                                var cancelButton = document.getElementById("cancelButton");
+								cancelButton.addEventListener("click", function () {
+                                    $("#modal").addClass('hidden')
+                                    $("#modal").removeClass('flex')
+								});
+                                var showModalButton = document.getElementById("showModalButton");
+								showModalButton.addEventListener("click", function () {
+                                    $("#modal").addClass('flex')
+                                    $("#modal").removeClass('hidden')
+								});
+
+								function pdfconvertToBase64() {
+									//Read File
+									var selectedFile = document.getElementById("pdffile").files;
+									//Check File is not Empty
+									if (selectedFile.length > 0) {
+										// Select the very first file from list
+										var fileToLoad = selectedFile[0];
+										// FileReader function for read the file.
+										var fileReader = new FileReader();
+										var base64;
+										// Onload of file read the file content
+										fileReader.onload = function (fileLoadedEvent) {
+											base64 = fileLoadedEvent.target.result;
+											// Print data in console
+											console.log(base64);
+											$("#pdftext").val(base64);
+										};
+										// Convert data to base64
+										fileReader.readAsDataURL(fileToLoad);
+									}
+								}
+
+								var saveButton = document.getElementById("saveButton");
+								saveButton.addEventListener("click", function () {
+									pdfconvertToBase64();
+									savedocumenttoapi();
+								});
+
+								function savedocumenttoapi() {
+									//var username = $("#username").text();
+
+									var settings = {
+										"url": "http://localhost:8000/documentfile",
+										"method": "POST",
+										"timeout": 0,
+										"headers": {
+											"Content-Type": "application/json",
+											"Cookie": "Cookie_1=value; Cookie_2=value"
+										},
+										"data": JSON.stringify({"filenama": $("#filenama").val(), "username": username, "pdffile": $("#pdftext").val(), "username_to": $("#username_to").val() }),
+									};
+
+									$.ajax(settings).done(function (response) {
+										if (response.rc === "00") {
+											alert(response.msg);
+											window.location.reload();
+										} else {
+											alert("Gagal Update");
+										}
+									});
+								}
+							</script>
+        </div>
+    </div>
+
+
+	<!-- CONTENT -->
+	
+	<!-- CONTENT -->
+
+	<script src="https://cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
+	<script src="script.js">
+	</script>
+	<script type="text/javascript">
+		CKEDITOR.replace('isidata',
+			{
+
+
+				toolbar:
+					[
+						{ name: 'document', items: ['Preview'] },
+						{ name: 'clipboard', items: ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo'] },
+						{ name: 'editing', items: ['Find', 'Replace', '-', 'SelectAll', '-', 'Scayt'] },
+						{ name: 'insert', items: ['Image', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak'] },
+						'/',
+						{ name: 'styles', items: ['Styles', 'Format'] },
+						{ name: 'basicstyles', items: ['Bold', 'Italic', 'Strike', '-', 'RemoveFormat'] },
+						{ name: 'paragraph', items: ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote'] },
+						{ name: 'links', items: ['Link', 'Unlink', 'Anchor'] },
+						{ name: 'tools', items: ['Maximize', '-', 'About'] }
+
+					],
+				width: "100%",
+				height: "500px"
+
+			});
+
+            var data = sessionStorage.getItem("data") !== undefined ? JSON.parse(sessionStorage.getItem("data")) : "";
+			let username = data.user[0].username
+
+		$(document).ready(function () {
+			$("#name-title").html(username)
+
+			try {
+				getalluser();
+				//getalldocsbyuser();
+				var data = sessionStorage.getItem("data") !== undefined ? JSON.parse(sessionStorage.getItem("data")) : "";
+				console.log(data);
+				if (data === "") {
+					window.location = "./login/index.html";
+				} else if (data.rc === "00") {
+					$("#username").text(data.user[0].username);
+					$("#usernameup").val(data.user[0].username);
+					$("#email").val(data.user[0].email);
+					$("#sidebar").css("display", "block");
+				}
+			} catch (err) {
+				window.location = "./login/index.html";
+			}
+		});
+
+        getalldocsbyuser();
+        function getalldocsbyuser() {
+			var settings = {
+				"url": "http://localhost:8000/doc/" + username,
+				"method": "GET",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json",
+					"Cookie": "Cookie_1=value; Cookie_2=value"
+				},
+			};
+
+			$.ajax(settings).done(function (response) {
+				response = response.data
+				console.log('oi', response);
+				var html = '';
+
+				function stats (status) {
+					if (status == 1) return 'Pending'
+					else return 'Completed'
+				}
+
+				for(var i=0;i<response.length;i++){
+					var jsdata = response[i];
+					html += `
+                        <div class="flex gap-2 justify-between bg-white p-2 rounded items-center">
+                            <div class="max-w-[20%] text-center w-full">` + jsdata.filenama + `</div>
+                            <div class="max-w-[20%] text-center w-full">` + stats(jsdata.status) + `</div>
+                            <div class="max-w-[20%] text-center w-full">` + jsdata.updatedAt + `</div>
+                            <div class="max-w-[20%] text-center w-full">` + jsdata.username_to + `</div>
+                            <div class="max-w-[20%] text-center w-full">-</div>
+                        </div>
+					`;
+				}
+				$(".table-data").append(html);
+			});
+		}
+
+		function getalluser() {
+			var settings = {
+				"url": "http://localhost:8000/allusers",
+				"method": "GET",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json",
+					"Cookie": "Cookie_1=value; Cookie_2=value"
+				},
+			};
+
+			$.ajax(settings).done(function (response) {
+				console.log(response);
+				var html = '';
+
+				for(var i=0;i<response.length;i++){
+					var jsdata = response[i];
+					html += `<option value="`+jsdata.username+`">`+jsdata.username+`</option>`;
+				}
+				$("#username_to").empty().append(html);
+			});
+		}
+
+		function simpandata() {
+			var isidata = CKEDITOR.instances['isidata'].getData();
+			var judul = $("#judul").val();
+			alert(isidata);
+
+		}
+
+		function logout() {
+			sessionStorage.removeItem("data");
+			window.location = "./login/index.html";
+		}
+	</script>
+
+<script>
+const backendUrl = 'http://localhost:8000';
+
+$(document).ready(function () {
+	try {
+		var data = sessionStorage.getItem("data") !== undefined ? JSON.parse(sessionStorage.getItem("data")) : "";
+		console.log(data);
+		if (data === "") {
+			window.location = "./login/index.html";
+		} else if (data.rc === "00") {
+			$("#username").text(data.user[0].username);
+			$("#username_to").val(data.user[0].username);
+			$("#email").val(data.user[0].email);
+			$("#sidebar").css("display", "block");
+			
+			fetch(`${backendUrl}/doc/${data.user[0].username}`)
+			.then(response => response.json())
+			.then(data => {
+				 const documentCount = data.count;
+				 const documentCountElement = document.getElementById('document-count'); 
+				 if (documentCountElement) {
+					documentCountElement.textContent = documentCount.toString();
+				 }
+				})
+				.catch(error => {
+  					console.log(error);
+				});
+				fetch(`${backendUrl}/doc/status/${data.user[0].username}`)
+				.then(response => response.json())
+				.then(data => { 
+					const documentStatusCount = data.count;
+					const documentStatusCountElement = document.getElementById('document-count-status'); 
+					if (documentStatusCountElement) {	
+						documentStatusCountElement.textContent = documentStatusCount.toString();
+					}
+				})
+				.catch(error => {
+					console.log(error);
+				});
+			}
+		} catch (err) {
+	window.location = "./login/index.html";
+
+}
+});
+	</script>
+</div>
+</body>
+
+</html>

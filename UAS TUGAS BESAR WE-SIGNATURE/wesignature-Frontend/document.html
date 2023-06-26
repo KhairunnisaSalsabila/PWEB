@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Boxicons -->
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="style.css">
+	<script src="./js/jquerynew.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+	<script src="https://unpkg.com/downloadjs@1.4.7"></script>
+	<title>WE Signature</title>
+</head>
+
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-smile'></i>
+			<span class="text">SiDoo</span>
+		</a>
+		<div class="profile-tab-nav border-right">
+			<ul class="side-menu top">
+				<div class="p-4">
+					<h3 class="text-center" style="margin-left : 70px;" id="username"></h3>
+				</div>
+			</ul>
+			<ul class="side-menu top">
+				<li>
+					<a class="nav-link" id="dashboard-tab" data-toggle="pill" href="index.html" role="tab"
+						aria-controls="dashboard" aria-selected="false">
+						<i class='bx bxs-home'></i>
+						<span class="text">Home</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="nav-link" id="profile-tab" data-toggle="pill" href="profile.html" role="tab"
+						aria-controls="profile" aria-selected="false">
+						<i class='bx bxs-group'></i>
+						<span class="text">Profile</span>
+					</a>
+				</li>
+				<li class="active">
+					<a class="nav-link" id="document-tab" data-toggle="pill" href="document.html" role="tab"
+						aria-controls="documents" aria-selected="false">
+						<i class='bx bxs-file'></i>
+						<span class="text">Document</span>
+					</a>
+				</li>
+
+			</ul>
+			<ul class="side-menu">
+
+				<li>
+					<a class="nav-link" id="logout-tab" data-toggle="pill" href="javascript:void(0)" role="tab"
+						aria-controls="logout" aria-selected="false" onclick="logout()">
+						<i class='bx bxs-log-out-circle'></i>
+						<span class="text">Logout</span>
+					</a>
+				</li>
+			</ul>
+
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="table-data">
+				<div class="order">
+					<div class="head">
+						<h3>Documents</h3>
+					</div>
+					<table>
+						<thead>
+							<tr>
+								<th>Nama Surat</th>
+								<th>Status</th>
+								<th>Update</th>
+							</tr>
+						</thead>
+						<tbody id="tabledocument">
+
+
+
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+
+	<script src="script.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			try {
+				var data = sessionStorage.getItem("data") !== undefined ? JSON.parse(sessionStorage.getItem("data")) : "";
+				console.log(data);
+				if (data === "") {
+					window.location = "./login/index.html";
+				} else if (data.rc === "00") {
+					$("#username").text(data.user[0].username);
+					$("#usernameup").val(data.user[0].username);
+					$("#email").val(data.user[0].email);
+					$("#sidebar").css("display", "block");
+				}
+			} catch (err) {
+				window.location = "./login/index.html";
+			}
+
+			getAllDocument();
+		});
+
+		function logout() {
+			sessionStorage.removeItem("data");
+			window.location = "./login/index.html";
+		}
+
+		async function modifyPdf(urlpdf, urlsign, document_id) {
+			// Fetch an existing PDF document
+			const url = urlpdf;
+
+			//console.log(url); return
+			var myHeaders = new Headers();
+			myHeaders.append("Content-Type", "application/json");
+			const existingPdfBytes = await fetch(url, {mode: "no-cors"}).then(res => res.arrayBuffer());
+			//console.log(existingPdfBytes); return
+			console.log(existingPdfBytes); 
+
+			// Load a PDFDocument from the existing PDF bytes
+			const pdfDoc = await PDFLib.PDFDocument.load(existingPdfBytes);
+
+			// Get the first page of the document
+			const pages = pdfDoc.getPages();
+			const firstPage = pages[0];
+			const endPage = pages[pages.length - 1];
+
+			// Fetch JPEG image
+			const jpgUrl = urlsign;
+			const jpgImageBytes = await fetch(jpgUrl).then((res) => res.arrayBuffer());
+
+			const jpgImage = await pdfDoc.embedJpg(jpgImageBytes);
+			const jpgDims = jpgImage.scale(0.25);
+
+
+			// Get the width and height of the first page
+			const { width, height } = firstPage.getSize();
+			// firstPage.drawText('This text was added with JavaScript!', {
+			// 	x: 5,
+			// 	y: height / 2 + 300,
+			// 	size: 50
+			// });
+
+
+			// Add a blank page to the document
+
+			endPage.drawImage(jpgImage, {
+				x: ((firstPage.getWidth() * 3) / 4) - jpgDims.width / 2,
+				y: ((firstPage.getHeight() * 0.5) / 4) - jpgDims.height / 2,
+				width: jpgDims.width,
+				height: jpgDims.height,
+			});
+
+
+			// Serialize the PDFDocument to bytes (a Uint8Array)
+			const pdfBytes = await pdfDoc.save();
+
+			// Trigger the browser to download the PDF document
+			download(pdfBytes, Date.now() + ".pdf", "application/pdf");
+
+			$(`#action-` + document_id).append(`
+				<button id="signbtn" onclick="signdoc('` + document_id + `')">Save</button>
+			`)
+		}
+
+		function getAllDocument() {
+			var settings = {
+				"url": "http://localhost:8000/Document",
+				"method": "GET",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json",
+					"Cookie": "Cookie_1=value; Cookie_2=value"
+				},
+			};
+
+			$.ajax(settings).done(function (response) {
+				console.log(response);
+				// var json = JSON.parse(response);
+				var json = response;
+
+				var html = "";
+				for (var i = 0; i < json.length; i++) {
+					var jsdata = json[i];
+					var sts = "";
+					var method = "";
+
+					switch (jsdata.status) {
+						case 1:
+							sts = "Pending";
+							//method = `checkFile('`+ jsdata.urlpdf + `','http://localhost/file/` + jsdata.username_to + `.jpg')`;
+							method = `window.open('` + jsdata.urlpdf + `', '_blank')`;	
+							break;
+						case 2:
+							sts = "Complete";
+							method = `modifyPdf('`+ jsdata.urlpdf + `','https://signaturer.vercel.app/file/` + jsdata.username_to + `.jpg')`;
+							break;
+
+					}
+					var tdtamabahan = "";
+					if (jsdata.username_to == $("#username").text() && jsdata.status == 1) {
+						tdtamabahan = `<td id='action-` + json[i].document_id + `'>
+								<button style="margin-right: 0.5rem;" id="signbtn" onclick="modifyPdf('`+ jsdata.urlpdf + `','https://signaturer.vercel.app/file/` + jsdata.username_to + `.jpg', '` + jsdata.document_id + `')">Sign</button>
+							<td>`;
+
+					}
+					if(jsdata.username_to === $("#username").text() || jsdata.username === $("#username").text()){
+					html += `<tr>
+								<td>
+									<a href="javascript:void(0)"
+										onclick="`+ method + `">
+										<p>`+ jsdata.filenama+ `_` +jsdata.username + ` to ` + jsdata.username_to + `</p>
+									</a>
+								</td>
+
+								<td><span class="status completed">`+ sts + `</span></td>
+								<td>`+ jsdata.createdAt + `</td>
+								`+ tdtamabahan + `
+
+							</tr>`;
+						}		
+				}
+
+				$("#tabledocument").empty().append(html);
+			});
+		}
+
+		function signdoc(id) {
+			var settings = {
+				"url": "http://localhost:8000/documentsign/" + id,
+				"method": "POST",
+				"timeout": 0,
+				"headers": {
+					"Content-Type": "application/json",
+					"Cookie": "Cookie_1=value; Cookie_2=value"
+				},
+			};
+			$.ajax(settings).done(function (response) {
+				// console.log(response);
+				if (response.rc === "00") {
+					alert(response.msg);
+					location.reload();
+				} else {
+					alert(response.msg);
+				}
+			});
+		}
+
+
+		async function signdoc2(id) {
+			//async function embedImages() {
+				//var data = sessionStorage.getItem("data") !== undefined ? JSON.parse(sessionStorage.getItem("data")) : "";
+				//console.log(data.user[0].sign_img)
+				//return
+
+				//modifyPdf()
+
+				const jpgUrl = //'https://pdf-lib.js.org/assets/cat_riding_unicorn.jpg'
+								'/file/johnwicks.jpg'
+								//fetch('movies.json')
+								
+				const pngUrl = //'https://miro.medium.com/v2/resize:fit:720/format:webp/1*PJRUyBsCbqXUJlR3bLVe7w.png'
+				'https://pdf-lib.js.org/assets/minions_banana_alpha.png'
+
+			  
+				const jpgImageBytes = await fetch('https://signaturer.vercel.app' + jpgUrl).then((res) => res.arrayBuffer())
+				const pngImageBytes = await fetch(pngUrl).then((res) => res.arrayBuffer())
+
+				const pdfDoc = await PDFLib.PDFDocument.create()
+			  
+				const jpgImage = await pdfDoc.embedJpg(jpgImageBytes)
+				const pngImage = await pdfDoc.embedPng(pngImageBytes)
+			  
+				const jpgDims = jpgImage.scale(0.5)
+				const pngDims = pngImage.scale(0.5)
+			  
+				const page = pdfDoc.addPage()
+			  
+				page.drawImage(jpgImage, {
+				  x: page.getWidth() / 2 - jpgDims.width / 2,
+				  y: page.getHeight() / 2 - jpgDims.height / 2 + 250,
+				  width: jpgDims.width,
+				  height: jpgDims.height,
+				})
+				page.drawImage(pngImage, {
+				  x: page.getWidth() / 2 - pngDims.width / 2 + 75,
+				  y: page.getHeight() / 2 - pngDims.height + 250,
+				  width: pngDims.width,
+				  height: pngDims.height,
+				})
+			  
+				const pdfBytes = await pdfDoc.save()
+
+				download(pdfBytes, "pdf-lib_creation_example.pdf", "application/pdf");
+			  //}
+		}
+
+		
+	</script>
+</body>
+
+</html>
